@@ -1,0 +1,50 @@
+<!Doctype html>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../../fashion.css">
+    <link rel="stylesheet" href="./cart.css">
+    <title>Cart</title>
+</head>
+<body>
+  <div id="no-items-dialog">
+    <h1>There are no items in the cart</h1>
+  </div>
+    <header>
+        <div class="logo">Fashion<span>Hub</span></div>
+        <nav>
+            <ul>
+                <li><a href="/fashion.html">Home</a></li>
+                <li><a href="#">Shop</a></li>
+                <li><a href="#">New Arrivals</a></li>
+                <li><a href="#">Sale</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+        <div class="header-icons">
+            <a href="#">Cart</a>
+            <a href="#">Login</a>
+        </div>
+    </header>
+  <div class="cart-summary">
+    <h1>Your cart</h1>
+  <p>Your total cost is: <span id="total-price"></span>$ </p>
+  </div>
+
+  <!-- The products are dynamically fetched like in the front page. -->
+  <div class="product-grid">
+  </div>
+
+  <button id="checkout-button">checkout</button>
+
+  <!-- The modal should be hidden at first -->
+  <div class="modal-container">
+    <div class="modal">
+      <span id="close-btn">x</span>
+      <p> You are about to checkout! </p>
+      <button id="checkout-confirm-button">confirm checkout</button>
+    </div>
+  </div>
+    
+  </div>
+  <script src="./cart.js" type="module"></script>
+</body>
