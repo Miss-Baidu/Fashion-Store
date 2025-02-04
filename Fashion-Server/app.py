@@ -40,7 +40,6 @@ def checkout():
     cartDetails = flask.request.get_json();
     print('PRINTING IN CARRRRTTTTTTT');
     for x in cartDetails['cart']:
-        print(x);
         print(" PRODUCT ID  = ", x["product_id"])
         with engine.connect() as conn:
             try: 
@@ -49,7 +48,7 @@ def checkout():
                 print("update done")
             except Exception as e:
                 print("ERRORRRRR")
-    return "Namaste"
+    return "Success"
 
 
 with app.app_context():
