@@ -104,3 +104,27 @@ window.onload = async function(){
   }
 }
 
+document.addEventListener('DOMContentLoaded', () => {
+  document.querySelectorAll('.add-to-cart-btn').forEach(button => {
+    button.addEventListener('click', async function (e) {
+      e.preventDefault();
+
+      const productId = parseInt(this.getAttribute('data-id'));
+
+      try {
+        const res = await fetch('/api/cart', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ productId })
+        });
+
+        const data = await res.json();
+        alert(data.message);
+      } catch (error) {
+        console.error('Error adding to cart:', error);
+      }
+    });
+  });
+});

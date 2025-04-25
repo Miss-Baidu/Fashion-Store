@@ -86,3 +86,30 @@ checkoutButton.addEventListener('click', ()=>{
 checkoutCloseButton.addEventListener('click', ()=>{
   checkoutModal.style.display = "none";
 })
+
+document.addEventListener('DOMContentLoaded', async () => {
+  try {
+    const response = await fetch('/api/cart');
+    const cartItems = await response.json();
+
+    const cartContainer = document.getElementById('cart-items');
+    if (cartItems.length === 0) {
+      cartContainer.innerHTML = '<p>Your cart is empty.</p>';
+    } else {
+      cartItems.forEach(item => {
+        const div = document.createElement('div');
+        div.classList.add('cart-item');
+        div.innerHTML = `
+          <img src="${item.image}" alt="${item.name}" width="100">
+          <h4>${item.name}</h4>
+          <p>$${item.price}</p>
+        `;
+        cartContainer.appendChild(div);
+      });
+    }
+  } catch (error) {
+    console.error('Error fetching cart:', error);
+  }
+});
+
+let cart = [];
